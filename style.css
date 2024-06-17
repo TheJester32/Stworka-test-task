@@ -140,10 +140,11 @@ body {
     cursor: pointer;
     color: rgba(71, 119, 237, 1);
     background-color: rgba(244, 248, 255, 1);
-    width: 170px;
+    width: 180px;
     border-radius: 6px;
     padding: 10px 25px;
     border: 1px solid #fff;
     font-size: 14px;
     font-weight: 400;
+    font-family: 'Inter';
 }
