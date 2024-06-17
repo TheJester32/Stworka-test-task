@@ -55,33 +55,32 @@ body {
 }
 
 .check-list__progress-circle {
-    width: 63.5px;
-    height: 63.5px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
-    background: conic-gradient(rgba(255, 255, 255, 1)0deg,
-            rgba(255, 255, 255, 1) calc(var(--progress) * 1deg),
-            rgba(255, 255, 255, 0.5)calc(var(--progress) * 1deg));
+    border: 1px solid rgba(255, 255, 255, 0.5);
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     position: relative;
-    color: #fff;
+    box-sizing: border-box;
 }
 
 .check-list__progress-circle::before {
     content: '';
-    width: 60px;
-    height: 60px;
-    background: rgba(53, 121, 245, 1);
-    border-radius: 50%;
     position: absolute;
+    top: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 3px;
+    background-color: #fff;
+    border-radius: 2px;
 }
 
-.check-list__progress-circle-text {
-    position: absolute;
+.check-list__progress-circle span {
     font-size: 20px;
-    font-weight: bold;
-    font-weight: lighter;
+    color: #fff;
 }
 
 .check-list__action-text-wrapper {
