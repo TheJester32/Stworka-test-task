@@ -55,33 +55,55 @@ body {
 }
 
 .check-list__progress-circle {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    --size: 60px;
+    --half-size: calc(var(--size) / 2);
+    --stroke-width-bg: 1px;
+    --stroke-width-fg: 3.5px;
+    --radius: calc((var(--size) - var(--stroke-width-fg)) / 2);
+    --circumference: calc(var(--radius) * pi * 2);
+    --progress: 3;
+    --dash: calc((var(--progress) * var(--circumference)) / 100);
     position: relative;
-    box-sizing: border-box;
-}
+    width: var(--size);
+    height: var(--size);
+  }
 
-.check-list__progress-circle::before {
-    content: '';
+  .check-list__progress-circle circle {
+    cx: var(--half-size);
+    cy: var(--half-size);
+    r: var(--radius);
+    fill: none;
+    stroke-linecap: round;
+  }
+
+  .check-list__progress-circle circle.bg {
+    stroke-width: var(--stroke-width-bg);
+    stroke: #ddd;
+  }
+
+  .check-list__progress-circle circle.fg {
+    stroke-width: var(--stroke-width-fg);
+    transform: rotate(-90deg);
+    transform-origin: var(--half-size) var(--half-size);
+    stroke-dasharray: var(--dash) calc(var(--circumference) - var(--dash));
+    stroke: #fff;
+  }
+
+  .check-list__progress-circle-text {
     position: absolute;
-    top: -2px;
+    top: 25%;
     left: 50%;
-    transform: translateX(-50%);
-    width: 8px;
-    height: 3px;
-    background-color: #fff;
-    border-radius: 2px;
-}
-
-.check-list__progress-circle span {
-    font-size: 20px;
+    transform: translate(-50%, -50%);
+    font-size: 14px;
+    font-weight: bold;
     color: #fff;
-}
+  }
+
+  @property --progress {
+    syntax: "<number>";
+    inherits: false;
+    initial-value: 0;
+  }
 
 .check-list__action-text-wrapper {
     display: flex;
