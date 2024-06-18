@@ -97,6 +97,7 @@ body {
     font-size: 20px;
     font-weight: bold;
     color: #fff;
+    font-weight: 400;
   }
 
   @property --progress {
